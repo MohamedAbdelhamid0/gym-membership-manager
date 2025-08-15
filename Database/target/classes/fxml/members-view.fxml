@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="8" fx:controller="com.gymx.controller.MembersController">
+    <padding><Insets topRightBottomLeft="10"/></padding>
+
+    <TableView fx:id="table" prefHeight="300">
+        <columns>
+            <TableColumn text="ID" fx:id="colId" prefWidth="60"/>
+            <TableColumn text="First" fx:id="colFirst"/>
+            <TableColumn text="Last" fx:id="colLast"/>
+            <TableColumn text="Email" fx:id="colEmail"/>
+            <TableColumn text="JoinDate" fx:id="colJoin"/>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="8" vgap="8">
+        <children>
+            <Label text="First Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="firstName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Last Name" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="lastName" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label text="Email" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Join (yyyy-MM-dd)" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="joinDate" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <Label text="DOB (yyyy-MM-dd)" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="dob" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Gender (M/F/O)" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <TextField fx:id="gender" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            <Label text="UID" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="uid" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </children>
+    </GridPane>
+
+    <HBox spacing="8">
+        <Button text="Add" onAction="#onAdd"/>
+        <Button text="Update" onAction="#onUpdate"/>
+        <Button text="Delete" onAction="#onDelete"/>
+        <Button text="Clear" onAction="#onClear"/>
+        <Label fx:id="status"/>
+    </HBox>
+</VBox>

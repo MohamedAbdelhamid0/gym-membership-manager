@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <ToolBar>
+            <Label text="Gym Membership DBMS" style="-fx-font-size:18px;-fx-font-weight:bold;"/>
+        </ToolBar>
+    </top>
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Members"><content><fx:include source="members-view.fxml"/></content></Tab>
+                <Tab text="Trainers"><content><fx:include source="trainers-view.fxml"/></content></Tab>
+                <Tab text="Sessions"><content><fx:include source="sessions-view.fxml"/></content></Tab>
+                <Tab text="Subscriptions"><content><fx:include source="subscriptions-view.fxml"/></content></Tab>
+                <Tab text="Attendance"><content><fx:include source="attendance-view.fxml"/></content></Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
