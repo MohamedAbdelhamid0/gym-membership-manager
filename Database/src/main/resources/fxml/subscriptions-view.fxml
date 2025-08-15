@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      spacing="8" fx:controller="com.gymx.controller.SubscriptionsController">
+    <padding><Insets topRightBottomLeft="10"/></padding>
+
+    <TableView fx:id="table" prefHeight="300">
+        <columns>
+            <TableColumn text="ID" fx:id="colId" prefWidth="60"/>
+            <TableColumn text="MemberID" fx:id="colMember"/>
+            <TableColumn text="Start" fx:id="colStart"/>
+            <TableColumn text="End" fx:id="colEnd"/>
+            <TableColumn text="Amount" fx:id="colAmount"/>
+            <TableColumn text="Type" fx:id="colType"/>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="8" vgap="8">
+        <children>
+            <Label text="MemberID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="memberId" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Start (yyyy-MM-dd)" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="start" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label text="End (yyyy-MM-dd)" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="end" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="AmountPaid" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="amount" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <Label text="Type" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="type" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </children>
+    </GridPane>
+
+    <HBox spacing="8">
+        <Button text="Add" onAction="#onAdd"/>
+        <Button text="Update" onAction="#onUpdate"/>
+        <Button text="Delete" onAction="#onDelete"/>
+    </HBox>
+</VBox>
