@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      spacing="8" fx:controller="com.gymx.controller.TrainersController">
+      spacing="8" fx:controller="com.gymx.controller.TrainersController" styleClass="content-root">
     <padding><Insets topRightBottomLeft="10"/></padding>
 
     <TableView fx:id="table" prefHeight="300">
@@ -14,24 +14,27 @@
             <TableColumn text="Email" fx:id="colEmail"/>
             <TableColumn text="Phone" fx:id="colPhone"/>
         </columns>
+        <placeholder>
+            <Label text="No trainers yet"/>
+        </placeholder>
     </TableView>
 
-    <GridPane hgap="8" vgap="8">
+    <GridPane hgap="8" vgap="8" styleClass="form-grid">
         <children>
             <Label text="First" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="first" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="first" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="First name"/>
             <Label text="Last" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <TextField fx:id="last" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <TextField fx:id="last" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="Last name"/>
             <Label text="Email" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="name@example.com"/>
             <Label text="Phone" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <TextField fx:id="phone" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <TextField fx:id="phone" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="(+xx) xxxxx-xxxxx"/>
             <Label text="Specialty" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="specialty" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="specialty" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="e.g., Strength, Yoga"/>
         </children>
     </GridPane>
 
-    <HBox spacing="8">
+    <HBox spacing="8" styleClass="action-bar">
         <Button text="Add" onAction="#onAdd"/>
         <Button text="Update" onAction="#onUpdate"/>
         <Button text="Delete" onAction="#onDelete"/>

@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      spacing="8" fx:controller="com.gymx.controller.AttendanceController">
+      spacing="8" fx:controller="com.gymx.controller.AttendanceController" styleClass="content-root">
     <padding><Insets topRightBottomLeft="10"/></padding>
 
     <TableView fx:id="table" prefHeight="300">
@@ -14,22 +14,25 @@
             <TableColumn text="Date" fx:id="colDate"/>
             <TableColumn text="Status" fx:id="colStatus"/>
         </columns>
+        <placeholder>
+            <Label text="No attendance records yet"/>
+        </placeholder>
     </TableView>
 
-    <GridPane hgap="8" vgap="8">
+    <GridPane hgap="8" vgap="8" styleClass="form-grid">
         <children>
             <Label text="MemberID" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="memberId" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="memberId" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Member ID"/>
             <Label text="SessionID" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <TextField fx:id="sessionId" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <TextField fx:id="sessionId" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="Session ID"/>
             <Label text="Date (yyyy-MM-dd)" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="date" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="date" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="yyyy-MM-dd"/>
             <Label text="Status" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <TextField fx:id="status" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <TextField fx:id="status" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="Present / Absent"/>
         </children>
     </GridPane>
 
-    <HBox spacing="8">
+    <HBox spacing="8" styleClass="action-bar">
         <Button text="Add" onAction="#onAdd"/>
         <Button text="Update" onAction="#onUpdate"/>
         <Button text="Delete" onAction="#onDelete"/>

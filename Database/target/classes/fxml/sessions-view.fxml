@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      spacing="8" fx:controller="com.gymx.controller.SessionsController">
+      spacing="8" fx:controller="com.gymx.controller.SessionsController" styleClass="content-root">
     <padding><Insets topRightBottomLeft="10"/></padding>
 
     <TableView fx:id="table" prefHeight="300">
@@ -15,24 +15,27 @@
             <TableColumn text="TrainerID" fx:id="colTrainer"/>
             <TableColumn text="Max" fx:id="colMax"/>
         </columns>
+        <placeholder>
+            <Label text="No sessions yet"/>
+        </placeholder>
     </TableView>
 
-    <GridPane hgap="8" vgap="8">
+    <GridPane hgap="8" vgap="8" styleClass="form-grid">
         <children>
             <Label text="Title" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="title" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="title" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Session title"/>
             <Label text="Start (yyyy-MM-dd HH:mm)" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <TextField fx:id="start" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <TextField fx:id="start" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="yyyy-MM-dd HH:mm"/>
             <Label text="End (yyyy-MM-dd HH:mm)" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="end" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="end" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="yyyy-MM-dd HH:mm"/>
             <Label text="TrainerID" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <TextField fx:id="trainerId" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <TextField fx:id="trainerId" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="Trainer ID"/>
             <Label text="MaxCapacity" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="maxCap" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="maxCap" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Max capacity"/>
         </children>
     </GridPane>
 
-    <HBox spacing="8">
+    <HBox spacing="8" styleClass="action-bar">
         <Button text="Add" onAction="#onAdd"/>
         <Button text="Update" onAction="#onUpdate"/>
         <Button text="Delete" onAction="#onDelete"/>
