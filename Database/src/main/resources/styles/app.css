@@ -1,2 +1,245 @@
 .root { -fx-font-family: "Segoe UI", "Arial", sans-serif; }
-.table-view { -fx-cell-size: 28px; }
+
+/* App-wide theme: modern dark with neon accent */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #111827);
+    -fx-accent: #22d3ee; /* cyan */
+    -fx-focus-color: #22d3ee;
+    -fx-faint-focus-color: rgba(34, 211, 238, 0.2);
+    -fx-text-base-color: #e5e7eb;
+}
+
+/* Toolbar / Header */
+.app-toolbar {
+    -fx-background-color: linear-gradient(to bottom, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.8));
+    -fx-padding: 14px 18px;
+    -fx-background-insets: 0;
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-border-width: 0 0 1 0;
+    -fx-border-insets: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 20, 0.3, 0, 6);
+}
+
+.app-toolbar .label.app-title {
+    -fx-text-fill: #e5e7eb;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.25), 12, 0.5, 0, 0);
+}
+
+/* TabPane */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: #0b1220; /* deep navy to ensure high contrast */
+    -fx-padding: 8px 12px 0 12px;
+    -fx-background-insets: 0;
+    -fx-border-color: rgba(255,255,255,0.08);
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Some JavaFX skins use a nested background node here */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #0b1220;
+    -fx-background-insets: 0;
+}
+
+.tab-pane .headers-region .tab {
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-background-color: #111827; /* dark tab for strong contrast */
+    -fx-padding: 10px 16px;
+    -fx-background-insets: 0;
+    -fx-border-radius: 12px 12px 0 0;
+    -fx-border-color: #374151;
+    -fx-border-width: 1 1 0 1;
+}
+
+.tab-pane .headers-region .tab:hover {
+    -fx-background-color: #1f2937; /* slightly lighter on hover */
+}
+
+.tab-pane .headers-region .tab:selected {
+    -fx-background-color: linear-gradient(to bottom, #22d3ee, #06b6d4);
+    -fx-border-color: #22d3ee;
+}
+
+.tab .tab-label, .tab .label {
+    -fx-text-fill: #e5e7eb;
+    -fx-font-weight: 700;
+    -fx-letter-spacing: 0.2px;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 6, 0.6, 0, 0);
+}
+
+.tab:selected .tab-label, .tab:selected .label {
+    -fx-text-fill: #0b1220; /* dark text on bright cyan for maximum contrast */
+    -fx-effect: none;
+}
+
+/* Content card wrapper for each view */
+.content-root {
+    -fx-background-color:
+        linear-gradient(to bottom right, rgba(255,255,255,0.08), rgba(255,255,255,0.04)),
+        rgba(17,24,39,0.75);
+    -fx-background-insets: 0, 0;
+    -fx-background-radius: 16px;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 24, 0.4, 0, 10);
+}
+
+/* Ensure labels are legible globally */
+.label {
+    -fx-text-fill: #e5e7eb;
+}
+
+/* Prompt text contrast */
+.text-input .prompt-text, .combo-box-base .prompt-text, .date-picker .prompt-text {
+    -fx-fill: #94a3b8;
+}
+
+/* Table placeholder text */
+.table-view .placeholder .label {
+    -fx-text-fill: #cbd5e1;
+    -fx-opacity: 0.9;
+}
+
+/* Tables */
+.table-view {
+    -fx-cell-size: 28px;
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255,255,255,0.07);
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
+    -fx-background-insets: 0;
+    -fx-background-radius: 12px 12px 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 40px;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #e5e7eb;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: rgba(255,255,255,0.02);
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: linear-gradient(to right, rgba(34,211,238,0.24), rgba(34,211,238,0.1));
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #e5e7eb;
+    -fx-padding: 8px 12px;
+}
+
+/* Forms */
+.form-grid {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+}
+
+.form-grid .label {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-weight: 600;
+}
+
+.text-field, .combo-box-base, .date-picker {
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-background-insets: 0;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #e5e7eb;
+    -fx-padding: 8px 12px;
+    -fx-border-color: rgba(255,255,255,0.1);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.text-field:focused, .combo-box-base:focused, .date-picker:focused {
+    -fx-background-color: rgba(34,211,238,0.12);
+    -fx-border-color: #22d3ee;
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.35), 12, 0.5, 0, 0);
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: linear-gradient(to bottom right, #22d3ee, #06b6d4);
+    -fx-text-fill: #0b1220;
+    -fx-font-weight: 700;
+    -fx-background-radius: 12px;
+    -fx-padding: 10px 16px;
+    -fx-effect: dropshadow(gaussian, rgba(34,211,238,0.4), 16, 0.6, 0, 4);
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-border-radius: 12px;
+    -fx-border-width: 0;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom right, #67e8f9, #22d3ee);
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom right, #0ea5b2, #0891a6);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0.4, 0, 2);
+}
+
+.action-bar {
+    -fx-spacing: 10px;
+}
+
+/* Toggle buttons (Login / Sign up) */
+.toggle-button {
+    -fx-background-color: rgba(255,255,255,0.10);
+    -fx-text-fill: #e5e7eb;
+    -fx-font-weight: 700;
+    -fx-background-radius: 10px;
+    -fx-padding: 8px 14px;
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.toggle-button:hover {
+    -fx-background-color: rgba(255,255,255,0.16);
+}
+
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(to bottom right, #22d3ee, #06b6d4);
+    -fx-text-fill: #0b1220;
+    -fx-border-color: #22d3ee;
+}
+
+/* Optional segmented style if grouped */
+.segmented .toggle-button {
+    -fx-background-radius: 10 0 0 10;
+}
+.segmented .toggle-button + .toggle-button {
+    -fx-background-radius: 0 10 10 0;
+}
+
+/* Scrollbar subtle styling */
+.scroll-bar:vertical .track, .scroll-bar:horizontal .track {
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-background-insets: 0;
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: rgba(34,211,238,0.45);
+    -fx-background-insets: 0;
+    -fx-background-radius: 8px;
+}

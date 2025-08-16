@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      spacing="8" fx:controller="com.gymx.controller.MembersController">
+      spacing="8" fx:controller="com.gymx.controller.MembersController" styleClass="content-root">
     <padding><Insets topRightBottomLeft="10"/></padding>
 
     <TableView fx:id="table" prefHeight="300">
@@ -14,28 +14,31 @@
             <TableColumn text="Email" fx:id="colEmail"/>
             <TableColumn text="JoinDate" fx:id="colJoin"/>
         </columns>
+        <placeholder>
+            <Label text="No members yet"/>
+        </placeholder>
     </TableView>
 
-    <GridPane hgap="8" vgap="8">
+    <GridPane hgap="8" vgap="8" styleClass="form-grid">
         <children>
             <Label text="First Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="firstName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="firstName" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="First name"/>
             <Label text="Last Name" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <TextField fx:id="lastName" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <TextField fx:id="lastName" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="Last name"/>
             <Label text="Email" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="email" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="name@example.com"/>
             <Label text="Join (yyyy-MM-dd)" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <TextField fx:id="joinDate" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <TextField fx:id="joinDate" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="yyyy-MM-dd"/>
             <Label text="DOB (yyyy-MM-dd)" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="dob" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="dob" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="yyyy-MM-dd"/>
             <Label text="Gender (M/F/O)" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-            <TextField fx:id="gender" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            <TextField fx:id="gender" GridPane.rowIndex="2" GridPane.columnIndex="3" promptText="M / F / O"/>
             <Label text="UID" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <TextField fx:id="uid" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <TextField fx:id="uid" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="Unique ID"/>
         </children>
     </GridPane>
 
-    <HBox spacing="8">
+    <HBox spacing="8" styleClass="action-bar">
         <Button text="Add" onAction="#onAdd"/>
         <Button text="Update" onAction="#onUpdate"/>
         <Button text="Delete" onAction="#onDelete"/>
