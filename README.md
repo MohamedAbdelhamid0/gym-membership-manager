@@ -91,7 +91,7 @@ Prerequisites:
 
 Clone and build:
 ```bash
-git clone <YOUR_REPO_URL>
+git clone <https://github.com/MohamedAbdelhamid0/gym-membership-manager.git>
 cd Database
 mvn -DskipTests package
 ```
