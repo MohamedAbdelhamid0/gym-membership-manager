@@ -1,90 +1,161 @@
-# Gym Membership Manager
+# GymX DBMS (JavaFX + SQLite)
 
-This project is a Java + JavaFX application for managing gym memberships.  
-Follow the instructions below to clone this repository, work on it, and contribute.
+A modern, stylish desktop app to manage a gym’s data. Built with JavaFX 17 and SQLite, featuring a neon-dark theme, authentication gateway (Login/Signup), and full CRUD for Members, Trainers, Sessions, Subscriptions, and Attendance.
 
----
+## Table of Contents
+- Features
+- Tech Stack
+- Project Structure
+- Getting Started
+- Run
+- Database
+- Usage
+- Styling
+- Security Notes
+- Troubleshooting
+- Contributing
+- License
 
-## 📥 Install Git
-If you don’t already have Git installed, download it here:  
-[**Download Git**](https://git-scm.com/downloads)  
+## Features
+- Authentication gateway
+  - Login and Signup with roles: ADMIN, TRAINER, STAFF
+  - Passwords hashed with SHA-256
+- Dashboard with tabs
+  - Members, Trainers, Sessions, Subscriptions, Attendance
+  - Full CRUD via simple forms + tables
+- Modern dark theme
+  - High-contrast tab headers, neon cyan accents, polished controls
+- SQLite storage
+  - DB auto-created at data/gym.db
+  - Schema auto-applied from resources/schema.sql
 
-Follow the installer steps for your operating system.  
-To check if Git is installed, run:
-```bash
-git --version
+## Tech Stack
+- Java 17
+- JavaFX 17 (controls, fxml)
+- SQLite via sqlite-jdbc
+- Maven
+
+## Project Structure
+```text
+src/
+  main/
+    java/
+      com/gymx/
+        MainApp.java                # App entry (starts at auth)
+        controller/
+          AuthController.java
+          MembersController.java
+          TrainersController.java
+          SessionsController.java
+          SubscriptionsController.java
+          AttendanceController.java
+        dao/
+          UserDao.java
+          MemberDao.java
+          TrainerDao.java
+          SessionDao.java
+          SubscriptionDao.java
+          AttendanceDao.java
+        db/
+          Database.java             # SQLite bootstrap + schema apply
+        model/
+          User.java
+          Member.java
+          Trainer.java
+          Session.java
+          Subscription.java
+          Attendance.java
+      module-info.java
+    resources/
+      fxml/
+        auth-view.fxml
+        dashboard.fxml
+        members-view.fxml
+        trainers-view.fxml
+        sessions-view.fxml
+        subscriptions-view.fxml
+        attendance-view.fxml
+      styles/
+        app.css                     # Dark neon theme
+      schema.sql                    # CREATE TABLE IF NOT EXISTS
+data/
+  gym.db                            # Created on first run
 ```
 
----
+## Getting Started
+Prerequisites:
+- JDK 17
+- Maven 3.8+ (optional if running from IDE)
 
-## 📂 Clone the Repository
-To download the project to your local machine:
-
-1. Open a terminal or command prompt.
-2. Navigate to the folder where you want the project.
-3. Run:
+Clone and build:
 ```bash
-git clone https://github.com/Uoerim/gym-membership-manager.git
-```
-4. Navigate into the project folder:
-```bash
-cd gym-membership-manager
+git clone <YOUR_REPO_URL>
+cd Database
+mvn -DskipTests package
 ```
 
----
+## Run
+Recommended (IntelliJ IDEA):
+- Open the project
+- Set Project SDK to JDK 17
+- Run configuration: Main class `com.gymx.MainApp`, module `com.gymx`
+- Run. On first launch:
+  - Choose “Sign up” to create your first user
+  - Switch to “Login” to enter the app
 
-## 🌱 Create a New Branch
-Creating a branch lets you work on changes without affecting the main code.
-
-1. Make sure you are up-to-date:
+Command line (if you have the JavaFX SDK):
 ```bash
-git pull origin main
+# Replace /path/to/javafx-sdk/lib with your path
+java --module-path "/path/to/javafx-sdk/lib" \
+     --add-modules javafx.controls,javafx.fxml \
+     -cp target/classes;~/.m2/repository/org/xerial/sqlite-jdbc/3.46.0.0/sqlite-jdbc-3.46.0.0.jar \
+     com.gymx.MainApp
 ```
-2. Create and switch to a new branch:
-```bash
-git checkout -b branch-name
-```
-Replace `branch-name` with something descriptive, e.g. `feature-login-page`. 🚨🚨🚨 (Please create a branch for every task) 🚨🚨🚨
+Note: On Windows, separate classpath entries with “;”; on macOS/Linux use “:”.
 
----
+## Database
+- SQLite database at `data/gym.db` (auto-created)
+- `schema.sql` is applied at startup and is idempotent
+- To reset, close the app and delete `data/gym.db`
 
-## 📤 Push Your Changes
-After making edits:
+Tables (high-level):
+- `User(UserID, FirstName, LastName, Email [UNIQUE], PasswordHash, Role [ADMIN|TRAINER|STAFF])`
+- `Member(MemberID, UserID, JoinDate, FirstName, LastName, Email [UNIQUE], DateOfBirth, Gender [M|F|O], UID)`
+- `Trainer(TrainerID, Phone, Specialty, FirstName, LastName, Email [UNIQUE])`
+- `Session(SessionID, StartTime, EndTime, Title, TrainerID, MaxCapacity)`
+- `Subscription(SubscriptionID, MemberID, StartDate, EndDate, AmountPaid, SubscriptionType)`
+- `Attendance(AttendanceID, MemberID, SessionID, AttendanceDate, Status [BOOKED|ATTENDED|MISSED|CANCELLED])`
 
-1. Stage your changes:
-```bash
-git add .
-```
-2. Commit your changes:
-```bash
-git commit -m "Describe your changes here"
-```
-3. Push your branch to GitHub:
-```bash
-git push origin branch-name
-```
+## Usage
+- Sign up or Login on the auth screen
+  - When “Login” is selected, signup-only fields (First/Last/Role) hide automatically
+- Use top tabs to manage each entity
+- Tables show data and placeholders when empty
+- Forms allow Add/Update/Delete; status labels provide feedback
 
----
+## Styling
+- Global theme in `resources/styles/app.css`
+- Accent color: `#22d3ee` (cyan), with dark backgrounds for high contrast
+- Styled components: `TabPane`, `TableView`, `TextField`, `PasswordField`, `ComboBox`, `Button`, `ToggleButton`, scrollbars
+- To retheme, adjust `-fx-accent`, backgrounds, and radii in `app.css`
 
-## 🔄 Create a Pull Request (PR)
-🚨🚨🚨 ( Please assign yourself ) 🚨🚨🚨
+## Security Notes
+- Passwords are hashed with SHA-256 (`UserDao.sha256`)
+- For production, replace with a salted password KDF (e.g., bcrypt/scrypt/Argon2), add rate limiting, and secure storage
 
-A Pull Request lets others review and merge your branch into `main`.
+## Troubleshooting
+- SLF4J “StaticLoggerBinder” warning: harmless (no-op logger)
+- JavaFX module path issues (CLI):
+  - Ensure JavaFX modules are on the `--module-path`, and `--add-modules` includes `javafx.controls,javafx.fxml`
+- “mvn not found”:
+  - Install Maven or run directly from IDE
+- UI contrast issues:
+  - This app targets a dark theme; avoid overriding styles unless you also adjust text colors
 
-1. Go to your repository on GitHub.
-2. You should see a prompt: **"Compare & pull request"** — click it.  
-   Or go to the **Pull Requests** tab and click **New pull request**.
-3. Make sure the base branch is `main` and the compare branch is your branch.
-4. Add a title and description for your PR.
-5. Click **Create pull request**.
+# Contributing
+- Fork the repository and create a feature branch
+- Follow clear naming and concise methods; prefer early returns and avoid deep nesting
+- Submit a pull request with a brief description and screenshots/GIFs for UI changes
 
----
-
-## ✅ Merging
-Once approved, your branch can be merged into `main`.  
-You can then delete your branch locally and remotely to keep things clean:
-
-
----
-
-**Happy coding! 💪**
+## License
+Add your chosen license (e.g., MIT, Apache-2.0) to the repository and reference it here.
