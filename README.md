@@ -2,6 +2,8 @@
 
 A modern, stylish desktop app to manage a gym’s data. Built with JavaFX 17 and SQLite, featuring a neon-dark theme, authentication gateway (Login/Signup), and full CRUD for Members, Trainers, Sessions, Subscriptions, and Attendance.
 
+** NOTE: I Am One Of The Contributors Of The Main Repo! ** 
+
 ## Table of Contents
 - Features
 - Tech Stack
