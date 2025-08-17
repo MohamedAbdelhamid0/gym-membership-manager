@@ -103,15 +103,6 @@ Recommended (IntelliJ IDEA):
   - Choose “Sign up” to create your first user
   - Switch to “Login” to enter the app
 
-Command line (if you have the JavaFX SDK):
-```bash
-# Replace /path/to/javafx-sdk/lib with your path
-java --module-path "/path/to/javafx-sdk/lib" \
-     --add-modules javafx.controls,javafx.fxml \
-     -cp target/classes;~/.m2/repository/org/xerial/sqlite-jdbc/3.46.0.0/sqlite-jdbc-3.46.0.0.jar \
-     com.gymx.MainApp
-```
-Note: On Windows, separate classpath entries with “;”; on macOS/Linux use “:”.
 
 ## Database
 - SQLite database at `data/gym.db` (auto-created)
@@ -151,11 +142,11 @@ Tables (high-level):
   - Install Maven or run directly from IDE
 - UI contrast issues:
   - This app targets a dark theme; avoid overriding styles unless you also adjust text colors
+ 
+-- Found Something? DM me on Twitter @0xtkmo
 
 # Contributing
 - Fork the repository and create a feature branch
 - Follow clear naming and concise methods; prefer early returns and avoid deep nesting
 - Submit a pull request with a brief description and screenshots/GIFs for UI changes
 
-## License
-Add your chosen license (e.g., MIT, Apache-2.0) to the repository and reference it here.
